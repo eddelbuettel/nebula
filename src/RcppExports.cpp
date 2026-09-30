@@ -122,12 +122,12 @@ BEGIN_RCPP
 END_RCPP
 }
 // call_cumsumy
-Eigen::MatrixXd call_cumsumy(const Eigen::MappedSparseMatrix<double> count, const Eigen::VectorXi& fid, const int k, const int ng);
+Eigen::MatrixXd call_cumsumy(const Eigen::Map<Eigen::SparseMatrix<double>> count, const Eigen::VectorXi& fid, const int k, const int ng);
 RcppExport SEXP _nebula_call_cumsumy(SEXP countSEXP, SEXP fidSEXP, SEXP kSEXP, SEXP ngSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const Eigen::MappedSparseMatrix<double> >::type count(countSEXP);
+    Rcpp::traits::input_parameter< const Eigen::Map<Eigen::SparseMatrix<double>> >::type count(countSEXP);
     Rcpp::traits::input_parameter< const Eigen::VectorXi& >::type fid(fidSEXP);
     Rcpp::traits::input_parameter< const int >::type k(kSEXP);
     Rcpp::traits::input_parameter< const int >::type ng(ngSEXP);
@@ -136,12 +136,12 @@ BEGIN_RCPP
 END_RCPP
 }
 // call_posindy
-Rcpp::List call_posindy(const Eigen::MappedSparseMatrix<double> count, const int k, const int nc);
+Rcpp::List call_posindy(const Eigen::Map<Eigen::SparseMatrix<double>> count, const int k, const int nc);
 RcppExport SEXP _nebula_call_posindy(SEXP countSEXP, SEXP kSEXP, SEXP ncSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const Eigen::MappedSparseMatrix<double> >::type count(countSEXP);
+    Rcpp::traits::input_parameter< const Eigen::Map<Eigen::SparseMatrix<double>> >::type count(countSEXP);
     Rcpp::traits::input_parameter< const int >::type k(kSEXP);
     Rcpp::traits::input_parameter< const int >::type nc(ncSEXP);
     rcpp_result_gen = Rcpp::wrap(call_posindy(count, k, nc));

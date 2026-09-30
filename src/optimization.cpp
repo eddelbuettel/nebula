@@ -347,7 +347,7 @@ Eigen::VectorXd ptmg_der_eigen(const Eigen::MatrixXd & X_c, const Eigen::VectorX
 
 
 // [[Rcpp::export]]
-Eigen::MatrixXd call_cumsumy(const Eigen::MappedSparseMatrix<double> count, const Eigen::VectorXi & fid, const int k, const int ng)
+Eigen::MatrixXd call_cumsumy(const Eigen::Map<Eigen::SparseMatrix<double>> count, const Eigen::VectorXi & fid, const int k, const int ng)
 {
 
   Eigen::MatrixXd cumsumy(ng,k);
@@ -356,7 +356,7 @@ Eigen::MatrixXd call_cumsumy(const Eigen::MappedSparseMatrix<double> count, cons
 
   for (int i=0; i<count.outerSize(); ++i)
   {
-    for (Eigen::MappedSparseMatrix<double>::InnerIterator it(count,i); it; ++it)
+    for (Eigen::Map<Eigen::SparseMatrix<double>>::InnerIterator it(count,i); it; ++it)
     {
       if(it.value()>0)
       {
@@ -375,7 +375,7 @@ Eigen::MatrixXd call_cumsumy(const Eigen::MappedSparseMatrix<double> count, cons
 }
 
 // [[Rcpp::export]]
-Rcpp::List call_posindy(const Eigen::MappedSparseMatrix<double> count, const int k, const int nc)
+Rcpp::List call_posindy(const Eigen::Map<Eigen::SparseMatrix<double>> count, const int k, const int nc)
 {
 
   // Eigen::SparseVector<int> cck = count.col(k);
@@ -391,7 +391,7 @@ Rcpp::List call_posindy(const Eigen::MappedSparseMatrix<double> count, const int
   Eigen::VectorXi n_onetwo(2);
 
 
-  for (Eigen::MappedSparseMatrix<double>::InnerIterator it(count,k); it; ++it)
+  for (Eigen::Map<Eigen::SparseMatrix<double>>::InnerIterator it(count,k); it; ++it)
   //for (Eigen::SparseVector<int>::InnerIterator it(cck); it; ++it)
   {
     if(it.value()>0)
